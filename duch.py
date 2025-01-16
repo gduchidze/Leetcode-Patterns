@@ -75,3 +75,41 @@ from typing import List
 # solution.mergeAlternately("abc", "defg")
 
 
+def search(nums, target):
+        l, r = 0, len(nums) - 1 
+        while l <= r:
+            m = (l + r) // 2
+            if nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1 
+            else: 
+                return m
+        return -1 
+
+def quickSort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    pivot = arr[len(arr) // 2]
+    left = []    
+    middle = []  
+    right = [] 
+    
+    for x in arr:
+        if x < pivot:
+            left.append(x)
+        elif x == pivot:
+            middle.append(x)
+        else:
+            right.append(x)
+    
+    return quickSort(left) + middle + quickSort(right)
+
+arr = [64, 34, 25, 12, 22, 11, 90]
+sorted_arr = quickSort(arr)
+searched_array = search(sorted_arr, 22)
+print("Searched Index", searched_array)
+print("Sorted Array", sorted_arr)
+
+
