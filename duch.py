@@ -113,3 +113,16 @@ print("Searched Index", searched_array)
 print("Sorted Array", sorted_arr)
 
 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        x = dict()
+
+        for index, num in enumerate(nums):
+            y = target - num
+
+            if y in x:
+                return index, x[y]
+            else:
+                x[num] = index
+
+
