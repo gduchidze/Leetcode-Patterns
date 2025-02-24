@@ -33,13 +33,34 @@ print(f"Range sum from index 1 to 3: {result}")
 class NumArray:
 
     def __init__(self, nums: List[int]):
+        # Step 1 : ვქმნით ახალ მასივს სიგრძით Array Len + 1 რადგან 0 იდან დაიწყოს 
         self.prefix_sum = [0] * (len(nums) + 1)
+        # Step 2 : ვავსებთ ახალ მასივს წინასწარ დაგროვილი ჯამთ და ვინახავთ უკეთესი TC სთვის
         for i in range(len(nums)):
             self.prefix_sum[i + 1] = self.prefix_sum[i] + nums[i]
         
 
     def sumRange(self, left: int, right: int) -> int:
         return self.prefix_sum[right + 1] - self.prefix_sum[left]
+
+
+# რატომ right + 1, მაგრამ left უცვლელი?
+# 📌 მთავარი იდეა:
+
+# prefix_sum[i] → ინახავს პირველი i ელემენტის ჯამს
+# prefix_sum[right + 1] უნდა ავიღოთ, რადგან ის nums[right]-საც მოიცავს.
+# მაგალითად, right = 5 და prefix_sum[5] მხოლოდ nums[0]-დან nums[4]-მდე ჯამს გვაძლევს,
+# ამიტომ უნდა ავიღოთ prefix_sum[6], რომელიც nums[5]-საც შეიცავს.
+
+# left უცვლელია, რადგან prefix_sum[left] უკვე არის left-1 ინდექსამდე ჯამის ბოლო მნიშვნელობა.
+
+
+        
+
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# param_1 = obj.sumRange(left,right)
 
 
 #O(1)
