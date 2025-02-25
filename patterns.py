@@ -26,10 +26,7 @@ result = range_sum(prefix_sum_arr, 1, 3)
 print(f"Prefix Sum Array: {prefix_sum_arr}")
 print(f"Range sum from index 1 to 3: {result}")
 
-
-
 # ამოცანა 1: Range Sum Query - Immutable
-
 class NumArray:
 
     def __init__(self, nums: List[int]):
@@ -64,7 +61,6 @@ class NumArray:
 
 
 #O(1)
-
 
 #Pattern 2 Sliding Window
 
